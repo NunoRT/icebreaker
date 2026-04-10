@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ice-light: #e0f7fa;
+  --ice-medium: #80deea;
+  --ice-dark: #0097a7;
+  --ice-deep: #006064;
+  --bg-gradient: linear-gradient(135deg, #0d1b2a 0%, #1b2838 30%, #0a3d62 70%, #0d1b2a 100%);
+  --text-primary: #e0f7fa;
+  --text-secondary: #80deea;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(128, 222, 234, 0.2);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Fredoka One', cursive;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

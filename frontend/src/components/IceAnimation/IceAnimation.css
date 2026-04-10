@@ -1,0 +1,313 @@
+.ice-animation {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #0a1628 0%, #0d2137 40%, #163a5c 100%);
+  z-index: 1000;
+  overflow: hidden;
+  transition: opacity 0.6s ease-out;
+}
+
+.ice-animation.done {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-out;
+}
+
+/* Background snowflakes */
+.ice-bg-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg-snowflake {
+  position: absolute;
+  top: -20px;
+  color: rgba(180, 230, 255, 0.4);
+  animation: snowfall linear infinite;
+  font-family: serif;
+}
+
+@keyframes snowfall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Ice block */
+.ice-block-container {
+  position: relative;
+  width: 280px;
+  height: 220px;
+  margin-bottom: 40px;
+}
+
+.ice-block {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(160, 225, 255, 0.35) 0%,
+      rgba(100, 200, 255, 0.12) 25%,
+      rgba(190, 240, 255, 0.3) 45%,
+      rgba(80, 180, 240, 0.08) 65%,
+      rgba(150, 220, 255, 0.25) 85%,
+      rgba(120, 210, 255, 0.15) 100%
+    );
+  border: 2px solid rgba(180, 230, 255, 0.35);
+  box-shadow:
+    0 0 50px rgba(100, 200, 255, 0.2),
+    0 0 100px rgba(100, 200, 255, 0.08),
+    inset 0 0 50px rgba(100, 200, 255, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.ice-surface {
+  position: absolute;
+  inset: 8px;
+  border-radius: 12px;
+  background: linear-gradient(
+    45deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.06) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.06) 55%,
+    transparent 75%
+  );
+}
+
+.ice-reflection {
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  width: 35%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  filter: blur(8px);
+  transform: rotate(-15deg);
+}
+
+.ice-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.25) 0%, transparent 70%);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+/* Cracks - more of them, faster reveal */
+.ice-crack {
+  position: absolute;
+  background: rgba(180, 230, 255, 0.7);
+  transform-origin: center;
+  opacity: 0;
+  transition: opacity 0.08s, width 0.3s ease-out, height 0.3s ease-out;
+}
+
+.crack-1 { top: 32%; left: 15%; width: 0; height: 2px; transform: rotate(-8deg); }
+.crack-2 { top: 50%; left: 8%;  width: 0; height: 2.5px; transform: rotate(4deg); }
+.crack-3 { top: 22%; left: 48%; width: 2px; height: 0; transform: rotate(-6deg); }
+.crack-4 { top: 42%; left: 28%; width: 0; height: 1.5px; transform: rotate(18deg); }
+.crack-5 { top: 62%; left: 20%; width: 0; height: 1.5px; transform: rotate(-14deg); }
+.crack-6 { top: 35%; left: 55%; width: 0; height: 2px; transform: rotate(10deg); }
+.crack-7 { top: 55%; left: 40%; width: 2px; height: 0; transform: rotate(-20deg); }
+
+/* Cracking phase - rapid shake + progressive crack growth */
+.cracking .ice-block {
+  animation: shake 0.08s ease-in-out infinite;
+}
+
+.cracking .crack-1 { opacity: 1; width: 55%; transition-delay: 0s; }
+.cracking .crack-2 { opacity: 1; width: 75%; transition-delay: 0.15s; }
+.cracking .crack-3 { opacity: 1; height: 55%; transition-delay: 0.25s; }
+.cracking .crack-4 { opacity: 1; width: 38%; transition-delay: 0.35s; }
+.cracking .crack-5 { opacity: 1; width: 48%; transition-delay: 0.5s; }
+.cracking .crack-6 { opacity: 1; width: 35%; transition-delay: 0.6s; }
+.cracking .crack-7 { opacity: 1; height: 30%; transition-delay: 0.7s; }
+
+@keyframes shake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  20%  { transform: translate(-4px, 2px) rotate(-0.5deg); }
+  40%  { transform: translate(3px, -2px) rotate(0.5deg); }
+  60%  { transform: translate(-2px, -1px) rotate(-0.3deg); }
+  80%  { transform: translate(4px, 1px) rotate(0.3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Impact flash */
+.impact-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300%;
+  height: 300%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 240, 255, 0.6) 0%, rgba(100, 200, 255, 0.1) 40%, transparent 70%);
+  animation: flash 0.4s ease-out forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes flash {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Shatter phase */
+.shatter .ice-block {
+  animation: explode 0.3s ease-out forwards;
+}
+
+@keyframes explode {
+  0%   { opacity: 1; transform: scale(1); }
+  40%  { opacity: 0.6; transform: scale(1.08); }
+  100% { opacity: 0; transform: scale(1.15); filter: blur(4px); }
+}
+
+/* Ice shards - realistic with gravity */
+.ice-shard {
+  position: absolute;
+  left: var(--start-x);
+  top: var(--start-y);
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(
+    135deg,
+    hsla(var(--hue), 80%, var(--lightness), 0.7),
+    hsla(var(--hue), 60%, var(--lightness), 0.3)
+  );
+  animation: shardFly 1.2s ease-out var(--delay) forwards;
+  box-shadow: 0 0 8px hsla(var(--hue), 80%, 80%, 0.3);
+}
+
+@keyframes shardFly {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(calc(var(--dx) * 0.5), var(--dy)) rotate(calc(var(--rot) * 0.4)) scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(var(--dx), calc(var(--dy) + var(--gravity))) rotate(var(--rot)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Sparkles */
+.ice-sparkle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px 2px rgba(200, 240, 255, 0.8);
+  animation: sparkle 0.6s ease-out var(--delay) forwards;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+/* Title */
+.ice-title {
+  font-size: 4rem;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px rgba(100, 200, 255, 0.5);
+}
+
+.ice-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  animation: titleReveal 0.4s ease-out forwards;
+}
+
+.title-lets  { animation-delay: 0.1s; color: #b4e6ff; }
+.title-break { animation-delay: 0.3s; color: #80deea; }
+.title-the   { animation-delay: 0.5s; color: #b4e6ff; }
+.title-ice   { animation-delay: 0.7s; color: #4dd0e1; }
+
+@keyframes titleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Shatter phase: all title words fade out, "Break" shakes first then fades */
+.shatter .title-lets {
+  animation: titleFadeOut 0.5s ease-out 0.3s forwards;
+}
+
+.shatter .title-break {
+  animation: titleBreakShake 0.15s ease-in-out 4, titleFadeOut 0.4s ease-out 0.7s forwards;
+}
+
+.shatter .title-the {
+  animation: titleFadeOut 0.5s ease-out 0.4s forwards;
+}
+
+.shatter .title-ice {
+  animation: titleFadeOut 0.5s ease-out 0.5s forwards;
+}
+
+.shatter .ice-subtitle {
+  animation: titleFadeOut 0.4s ease-out 0.2s forwards;
+}
+
+@keyframes titleBreakShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px) rotate(-3deg); }
+  75% { transform: translateX(6px) rotate(3deg); }
+}
+
+@keyframes titleFadeOut {
+  to { opacity: 0; transform: translateY(-20px) scale(0.9); }
+}
+
+.ice-subtitle {
+  font-size: 1.2rem;
+  color: rgba(180, 230, 255, 0.6);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.9s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .ice-title {
+    font-size: 2.5rem;
+    gap: 10px;
+  }
+  .ice-block-container {
+    width: 200px;
+    height: 160px;
+  }
+}

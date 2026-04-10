@@ -1,0 +1,556 @@
+.truths-container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 10px 20px 40px;
+  animation: ttFadeIn 0.4s ease-out;
+}
+
+@keyframes ttFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.truths-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.truths-title {
+  font-size: 1.4rem;
+  color: var(--ice-medium);
+  text-shadow: 0 0 15px rgba(100, 200, 255, 0.3);
+}
+
+.header-spacer { width: 60px; }
+
+.back-btn {
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border-color: var(--ice-medium);
+}
+
+/* MENU */
+.truths-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.menu-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.menu-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.menu-stats {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 24px;
+}
+
+.menu-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.play-btn {
+  padding: 14px 32px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: 2px solid #e74c3c;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.play-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(231, 76, 60, 0.4);
+}
+
+.play-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-new-btn {
+  padding: 14px 28px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border: 2px solid var(--card-border);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.add-new-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border-color: var(--ice-medium);
+}
+
+.existing-list {
+  width: 100%;
+  max-width: 350px;
+}
+
+.existing-list h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.existing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.del-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 100, 100, 0.5);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.del-btn:hover {
+  color: #ff6b6b;
+  background: rgba(255, 100, 100, 0.1);
+}
+
+/* ADD FORM */
+.add-truths-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: var(--ice-medium);
+}
+
+.form-instruction {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.statement-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.statement-input-row input {
+  flex: 1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.statement-input-row input:focus {
+  border-color: var(--ice-medium);
+}
+
+.lie-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.lie-toggle.is-lie {
+  background: rgba(231, 76, 60, 0.3);
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.cancel-btn {
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.submit-btn {
+  padding: 10px 28px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* PLAYING */
+.truths-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-progress {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.score-display {
+  font-weight: 700;
+  color: var(--ice-medium);
+}
+
+.person-name-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  animation: ttFadeIn 0.3s ease-out;
+}
+
+.person-initial {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.person-name-card span {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.pick-instruction {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.statements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.statement-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+}
+
+.statement-card:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.statement-card.selected {
+  background: rgba(231, 76, 60, 0.15);
+  border-color: #e74c3c;
+}
+
+.statement-card.is-the-lie {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: #e74c3c;
+  animation: revealShake 0.4s ease-in-out;
+}
+
+.statement-card.is-truth {
+  background: rgba(46, 204, 113, 0.12);
+  border-color: rgba(46, 204, 113, 0.4);
+}
+
+@keyframes revealShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.stmt-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.stmt-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.stmt-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  animation: badgePop 0.3s ease-out;
+}
+
+@keyframes badgePop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.lie-badge {
+  background: rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+}
+
+.truth-badge {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.game-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.reveal-btn {
+  padding: 14px 32px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: 2px solid #e74c3c;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.reveal-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(231, 76, 60, 0.4);
+}
+
+.reveal-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.next-btn {
+  padding: 14px 32px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: 2px solid #2ecc71;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: ttFadeIn 0.3s ease-out;
+}
+
+.next-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(46, 204, 113, 0.4);
+}
+
+/* FINISHED */
+.truths-finished {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: ttFadeIn 0.5s ease-out;
+}
+
+.finished-emoji {
+  font-size: 5rem;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 6px 15px rgba(0,0,0,0.3));
+}
+
+.finished-title {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.final-score {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.score-number {
+  font-family: 'Fredoka One', cursive;
+  font-size: 3.5rem;
+  color: var(--ice-medium);
+  text-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
+}
+
+.score-divider {
+  font-size: 2rem;
+  color: var(--text-secondary);
+}
+
+.score-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.finished-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.back-to-menu-btn {
+  padding: 12px 28px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border: 2px solid var(--card-border);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.back-to-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border-color: var(--ice-medium);
+}
